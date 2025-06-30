@@ -21,15 +21,15 @@ export type ListItem = {
 
 export default function App() {
 
- const [product, setProduct] = useState<Product | undefined>(undefined);
-
+ const [product, setProduct] = useState<any | undefined>([]);
+console.log(product)
 return(
 <div>
     <div className="container-fluid">
     <h1 className = "bg-warning text-center text-primary" >Shopping List App</h1> {/*Page header/title */}
     </div>
       <div className= "container-fluid"> {/* container for the Toolbar with buttons from ./Toolbar */}
-      <Toolbar/>
+      <Toolbar setProduct={setProduct}/>
       </div>
         <div className = 'col-md-12 text-center col-flex' >
         <div className=''>
@@ -40,10 +40,10 @@ return(
 
 
 </div>
- {/*
-<MakeList product = {ProductProps}/> 
+ 
+<MakeList product = {product} setProduct = {setProduct}/> 
 
-*/}
+
 </div>
 
 )
