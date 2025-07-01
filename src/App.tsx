@@ -23,27 +23,26 @@ export default function App() {
 
  const [product, setProduct] = useState<any | undefined>([]);
 console.log(product)
+
 return(
 <div>
     <div className="container-fluid">
     <h1 className = "bg-warning text-center text-primary" >Shopping List App</h1> {/*Page header/title */}
     </div>
       <div className= "container-fluid"> {/* container for the Toolbar with buttons from ./Toolbar */}
-      <Toolbar setProduct={setProduct}/>
-      </div>
-        <div className = 'col-md-12 text-center col-flex' >
-        <div className=''>
-            <h2 className='text-center my-3'>Shopping List</h2> {/*Subheading for List */}
-            </div>
+      <Toolbar/>
+        <div className = 'col-md-12 text-center col-flex'> 
+        
 </div>
 <div>
 
 
 </div>
  
-<MakeList product = {product} setProduct = {setProduct}/> 
+<AddToList product = {product} setProduct = {setProduct}/> 
 
 
+</div>
 </div>
 
 )

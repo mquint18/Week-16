@@ -2,14 +2,18 @@ import {useState } from "react"
 //import MakeList from "./MakeList";
 import type { ListItem } from "../App"
 
-type Props = {
-    product: ListItem[]
-
+type ProductProps = {
+    product: ListItem[];
+    setProduct: (product: object) => void
 }
+
 
 //let id = 0;
 
-export default function AddToList({ }: Props){
+export const shopList = [{}];
+
+
+export default function AddToList({product}: ProductProps){
 
     const [productId, setProductId]= useState(0)
     const [productName, setProductName] = useState(' ')
@@ -17,35 +21,65 @@ export default function AddToList({ }: Props){
     const [productPic, setProductPic] = useState('')
 
 
-    const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-
-
+    const handleFormSubmit = (event:React.ChangeEvent<HTMLInputElement>) => {
+        event.preventDefault();
     }
+
+    const [formData, setFormData] = useState({productId:0, productName:'', productQuant:0, productPic:''});
+
+    const handleChange = (e) => {
+        setFormData({...formData, [e.target.name]: e.target.value });
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        console.log('Form data submitted:', formData);
+    }
+    
 
 
     return (
         <div>
-            <form onSubmit={handleFormSubmit}>
+            <div>
+            <h2>Shopping List</h2>
+            {product.map(item => (
+                <div key={item.id}>
+                    {item.name} 
+                    {item.picture}
+                    {item.quantity}
+                    {item.id}
+                </div>
+            ))}
+            <div>
+            
+
+            </div>
+        </div>
+
+            <form onSubmit={handleSubmit}>
                     <label>Name:</label>
                     <input type="text" 
-                        value ={productName}
-                        onChange={(event) => setProductName(event.target.value)}
-                        />
+                        name ="name"
+                        value ={formData.productName}
+                        onChange={handleChange} />
                     <label>Amount:</label>
                     <input type="number"
-                        value = {productQuant}
-                        onChange={(event) => setProductQuant(parseInt(event.target.value))}
+                        name ='quantity'
+                        value = {formData.productQuant}
+                        onChange={handleChange}
                         />
                     <label>Picture Link:</label>
                     <input type="text" 
-                        value = {productPic}
-                        onChange={(event) => setProductPic(event.target.value)}
+                        name='picture'
+                        value = {formData.productPic}
+                        onChange={handleChange}
                     
                         />
                     <label>Item #:</label>
                     <input type="number" 
-                        value = {productId}
-                        onChange={(event) => setProductId(parseInt(event.target.value))}
+                        name="id"
+                        value = {formData.productId}
+                        onChange={handleChange}
                     
                         />
                 <button >Submit</button>

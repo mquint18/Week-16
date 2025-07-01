@@ -1,12 +1,26 @@
 //Imports the Toolbar Buttons into the Toolbar component and defines the buttons
 
+import { useState } from "react";
+import type {ListItem} from "../App"
 import ToolbarButton from "./ToolbarButton"
+import AddToList from "./AddToList";
+import MakeList from "./MakeList";
+import  { shopList } from "./MakeList";
 
-export default function Toolbar({setProduct}) {
+
+
+
+
+export default function Toolbar({}) {
+    const [products, setProducts] = useState([{}, {}]);
     const handleAddProduct = () => {
-        const newProduct = prompt("Pleae enter product");
-        setProduct([{name:newProduct}])
+        
+       
+        setProducts([{name:setProducts}])
     }
+
+
+    
      return (
     <div className = "container">
         <div className="btn-group">
@@ -17,3 +31,4 @@ export default function Toolbar({setProduct}) {
     </div> 
     )
 }
+    

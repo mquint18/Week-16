@@ -7,10 +7,9 @@ type ProductProps = {
     setProduct: (product: object) => void
 }
 
-
+export const shopList = [{}];
 export default function MakeList({product}: ProductProps) {
 
-    
     
 
 
@@ -27,7 +26,6 @@ export default function MakeList({product}: ProductProps) {
                 </div>
             ))}
             <div>
-            <AddToList product = {product}/> 
 
             </div>
         </div>
